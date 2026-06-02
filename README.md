@@ -15,7 +15,7 @@ rejects the cases p = 2 and p = 3 to be able to work with the Short Weierstrass 
 computes the discriminant modulo p;
 determines whether the curve is nonsingular modulo p;
 computes the number of points on E(F_p);
-lists the x-coordiantes of the affine points found on the curve. The y-coordinates can be easily found. 
+lists the set of affine points found on the curve.
 
 **Mathematical background**
 For each x in F_p, the program computes x^3 + ax + b mod p.
@@ -31,7 +31,7 @@ The point at infinity is included in the final count.
 For example, the user may study the curve
 y^2 = x^3 + x + 3 over F_7.
 The program computes the points over F_7 and returns #E(F_7).
-We find that #E(F_p)= 6, where the x-coordinates are:{ 4,  5,  6}, where x=5 correspond to the point (5,0), plus the point at infinity [0:1:0].
+We find that #E(F_7)= 6, where the points are:{(4, 1),  (4, 6),  (5, 0),  (6, 1),  (6, 6),  the point at infinity [0:1:0]}
 
 **Future improvements**
 
