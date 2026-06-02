@@ -65,29 +65,36 @@ int main() {
         int b_p=mod(b,p);
         cout<<"working modulo p, we have a="<< a_p << ", b="<<b_p<< endl;
         
-        int x; //x-coordinates
+        int x,y; //x and y-coordinates
         int SquareCounter=0; // counts the x-coordinates where we have a non-zero value for y mod p. We get two points for such x.
         int ZeroCounter=0; // counts the x-coordinates where we have a zero value for y mod p. We get one point for such x.
         int exponent=(p-1)/2;
-        int rhs, Y2;
-        vector<int> points;
+        int rhs, euler;
+        vector<pair<int, int>> points;
         for (x=0;x<p;x++)
         {
             rhs=mod(x*x*x+a_p*x+b_p,p);
             cout<< "x= "<< x<< ", rhs=x^3+ax+b mod p= "<< rhs<< endl;
-            Y2=modPower(rhs,exponent,p);
-            cout << "rhs^((p-1)/2) mod p= "<< Y2<< endl;
-            if (Y2==1) {SquareCounter++;
-                points.push_back(x);
+            euler=modPower(rhs,exponent,p);
+            cout << "rhs^((p-1)/2) mod p= "<< euler<< endl;
+            if (euler==1) {SquareCounter++;
+                for(int i=0; i<p;i++){
+                    if(mod(i*i,p)==rhs) {
+                        y=i;
+                        break;
+                    }
+                }
+                points.push_back({x,y});
+                points.push_back({x,mod(-y,p)});
             }
-            else if (Y2==0) {ZeroCounter++;
-                points.push_back(x);
+            else if (euler==0) {ZeroCounter++;
+                points.push_back({x,0});
             }
         }
-        cout << "Then #E(F_p)= "<< 2*SquareCounter+ZeroCounter+1 << endl;
-        cout<< "The x-coordinates are:{ ";
-        for(int k : points){
-        cout<< k << ",  ";
+        cout << "Then #E(F_"<< p<< ")= "<< 2*SquareCounter+ZeroCounter+1 << endl;
+        cout<< "The points are:{ ";
+        for(auto P : points){
+        cout<< "("<< P.first<< ", "<< P.second<< ")" << ",  ";
         }
         cout<<"the point at infinity [0:1:0]}";
     }
