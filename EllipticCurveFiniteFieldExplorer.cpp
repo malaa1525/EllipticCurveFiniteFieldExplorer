@@ -4,19 +4,19 @@
 using namespace std;
 
 // returns n modulo p
-int mod(int n, int p){
+int mod(long long n, int p){
     int r=n%p;
     if (r<0) r+=p;
     return r;
 }
 
-//modular exponentiation: computes base^expnont mod p
+//modular exponentiation: computes base^exponent mod p
 int modPower(int base, int exponent, int p){
-    int result=1;
+    long long result=1;
     for (int i=1;i<=exponent; i++){
         result*=base;
+        result=mod(result,p);
     }
-    result=mod(result,p);
     return result;
     
 }
@@ -53,7 +53,7 @@ int main() {
     cin>> b;
     
     
-    int disc=-16*(4*a*a*a +27*b*b);
+    long long disc=-16*(4LL*a*a*a +27LL*b*b);
     cout << "Discriminant E= "<< disc<<endl;
     int disc_p=mod(disc,p);
     if (disc_p ==0) cout << "The curve E is singular modulo p, so it is not an elliptic curve";
@@ -73,13 +73,13 @@ int main() {
         vector<pair<int, int>> points;
         for (x=0;x<p;x++)
         {
-            rhs=mod(x*x*x+a_p*x+b_p,p);
+            rhs=mod((long long)x*x%p*x+ (long long)a_p*x+ b_p,p);
             cout<< "x= "<< x<< ", rhs=x^3+ax+b mod p= "<< rhs<< endl;
             euler=modPower(rhs,exponent,p);
             cout << "rhs^((p-1)/2) mod p= "<< euler<< endl;
             if (euler==1) {SquareCounter++;
                 for(int i=0; i<p;i++){
-                    if(mod(i*i,p)==rhs) {
+                    if(mod((long long)i*i,p)==rhs) {
                         y=i;
                         break;
                     }
