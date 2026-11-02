@@ -1,3 +1,20 @@
+**Limitations**
+
+- Runtime grows quadratically in p: for each x the program computes a
+  modular power by repeated multiplication and searches for a square
+  root by trial, both O(p). In practice p up to about 10^5 runs in
+  under a minute; beyond that it becomes slow.
+- The discriminant before reduction is computed exactly in 64-bit
+  arithmetic for |a| up to about 5 × 10^5 and |b| up to about 10^8.
+- p and the coefficients are read as 32-bit integers.
+
+**Testing**
+
+Point counts were checked against an independent computation for nine
+curves, with p from 5 to 50021, including large coefficients and a
+singular curve.
+
+
 # EllipticCurveFiniteFieldExplorer
 A C++ program for exploring elliptic curves over finite fields.
 
@@ -43,3 +60,4 @@ computing the order of a point;
 testing Hasse's bound;
 studying the same curve modulo several primes;
 comparing point counts for different reductions.
+replacing repeated multiplication with square-and-multiply for faster modular exponentiation;
