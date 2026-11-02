@@ -1,20 +1,3 @@
-**Limitations**
-
-- Runtime grows quadratically in p: for each x the program computes a
-  modular power by repeated multiplication and searches for a square
-  root by trial, both O(p). In practice p up to about 10^5 runs in
-  under a minute; beyond that it becomes slow.
-- The discriminant before reduction is computed exactly in 64-bit
-  arithmetic for |a| up to about 5 × 10^5 and |b| up to about 10^8.
-- p and the coefficients are read as 32-bit integers.
-
-**Testing**
-
-Point counts were checked against an independent computation for nine
-curves, with p from 5 to 50021, including large coefficients and a
-singular curve.
-
-
 # EllipticCurveFiniteFieldExplorer
 A C++ program for exploring elliptic curves over finite fields.
 
@@ -49,6 +32,22 @@ For example, the user may study the curve
 y^2 = x^3 + x + 3 over F_7.
 The program computes the points over F_7 and returns #E(F_7).
 We find that #E(F_7)= 6, where the points are:{(4, 1),  (4, 6),  (5, 0),  (6, 1),  (6, 6),  the point at infinity [0:1:0]}
+
+**Limitations**
+
+- Runtime grows quadratically in p: for each x the program computes a
+  modular power by repeated multiplication and searches for a square
+  root by trial, both O(p). In practice p up to about 10^5 runs in
+  under a minute; beyond that it becomes slow.
+- The discriminant before reduction is computed exactly in 64-bit
+  arithmetic for |a| up to about 5 × 10^5 and |b| up to about 10^8.
+- p and the coefficients are read as 32-bit integers.
+
+**Testing**
+
+Point counts were checked against an independent computation for nine
+curves, with p from 5 to 50021, including large coefficients and a
+singular curve.
 
 **Future improvements**
 
