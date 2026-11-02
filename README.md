@@ -53,10 +53,10 @@ singular curve.
 
 Planned extensions include:
 
-implementing the elliptic curve group law;
-adding point addition and point doubling;
-computing the order of a point;
-testing Hasse's bound;
-studying the same curve modulo several primes;
-comparing point counts for different reductions.
-replacing repeated multiplication with square-and-multiply for faster modular exponentiation;
+- implementing the elliptic curve group law;
+- adding point addition and point doubling;
+- computing the order of a point;
+- testing Hasse's bound;
+- studying the same curve modulo several primes;
+- comparing point counts for different reductions.
+- replacing repeated multiplication with square-and-multiply for faster modular exponentiation;
